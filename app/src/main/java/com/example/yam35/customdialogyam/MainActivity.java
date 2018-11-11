@@ -126,9 +126,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if (which == DialogInterface.BUTTON_NEUTRAL) {
                 ad.cancel();
             }
-
-
-
+            
         }
 
     };
