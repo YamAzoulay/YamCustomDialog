@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     LinearLayout mydialog;
     EditText et1, et2;
     Switch s1;
-    double num1, d, sum1;
+    double num1, d, sum1, temp;
     int i = 0;
     Double[] array1;
     ListView l1;
@@ -95,10 +95,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     if (s1.isChecked()) {
                         num1 = Double.parseDouble(str1);
                         d = Double.parseDouble(str2);
+                        temp=num1;
                         array1[0] = num1;
                         for (i = 1; i < 20; i++) {
-                            array1[i] = num1 * d;
-                            num1 = num1 * d;
+                            array1[i] = temp * d;
+                            temp = temp * d;
                         }
 
 
@@ -106,9 +107,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         num1 = Double.parseDouble(str1);
                         d = Double.parseDouble(str2);
                         array1[0] = num1;
+                        temp=num1;
                         for (i = 1; i < 20; i++) {
-                            array1[i] = num1 + d;
-                            num1 = num1 + d;
+                            array1[i] = temp + d;
+                            temp = temp + d;
                         }
 
                     }
@@ -117,8 +119,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
             }
             if (which == DialogInterface.BUTTON_NEGATIVE) {
+                    num1= 0;
+                    d=0;
                 for (i = 0; i < 20; i++) {
-                    array1[i] = 0.0;
+                    array1[i] =0.0;
                 }
                 setArray();
 
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if (which == DialogInterface.BUTTON_NEUTRAL) {
                 ad.cancel();
             }
-            
+
         }
 
     };
@@ -138,10 +142,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        num1 = Double.parseDouble(str1);
         t1.setText("X1= " + num1);
         t2.setText("d= " + d);
-        t3.setText("n= " + position + 1);
+        t3.setText("n= " + (position+1));
         sum1 = 0;
         for (i = 0; i <= position; i++) {
             sum1 = array1[i] + sum1;
